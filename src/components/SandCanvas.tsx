@@ -226,7 +226,7 @@ const SandCanvas: React.FC<SandCanvasProps> = ({ onClear, clearTrigger }) => {
       {/* Drawing layer */}
       <canvas
         ref={drawingCanvasRef}
-        className="absolute inset-0 touch-none"
+        className="absolute inset-0"
         onMouseDown={handleStart}
         onMouseMove={handleMove}
         onMouseUp={handleEnd}
