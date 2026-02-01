@@ -36,8 +36,8 @@ const Index = () => {
       </div>
 
       {/* Subtle instruction hint */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 pointer-events-none">
-        <p className="text-muted-foreground/40 text-xs tracking-widest font-light animate-fade-in-up">
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 pointer-events-none">
+        <p className="text-muted-foreground/60 text-lg md:text-xl tracking-[0.3em] font-light animate-fade-in-up">
           指でなぞって砂に描く
         </p>
       </div>
