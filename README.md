@@ -4,7 +4,7 @@
 
 **URL**: https://feel-like-bite-nails.lovable.app
 
-誰にでも孤独を感じる時はあります。一人でいて寂しくなったとき、爪を噛んだり自分を傷つけたりする代わりに、砂に想いを書きなぐってみてください。その文字が砂の中に消えていくとき、あなたの心も一瞬でも軽くなれば幸いです。「思考と行動を軽くする」ための、最もシンプルなデジタル・フィジェットです。
+誰にでも孤独を感じる時はあります。一人でいて寂しくなったとき、爪を噛んだり自分を傷つけたりする代わりに、砂に想いを書きなぐってみてください。その文字が砂の中に消えていくとき、あなたの心が一瞬でも軽くなれば幸いです。「思考と行動を軽くする」ための、最もシンプルなデジタル・フィジェットです。
 ​Description (English):
 We all have moments of loneliness. When you feel anxious or alone, instead of biting your nails or succumbing to nervous habits, try scribbling your thoughts into this digital sand. Let your feelings dissolve as the sand shifts. If this app provides even a moment of relief and helps lighten your mind, it has fulfilled its purpose. A minimalist digital fidget for inner peace.
 
