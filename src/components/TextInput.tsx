@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Send } from 'lucide-react';
 import { useHaptics } from '@/hooks/useHaptics';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface TextInputProps {
   onSubmit?: (text: string) => void;
@@ -11,6 +12,7 @@ const TextInput: React.FC<TextInputProps> = ({ onSubmit }) => {
   const [isAbsorbing, setIsAbsorbing] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const { mediumTap } = useHaptics();
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ const TextInput: React.FC<TextInputProps> = ({ onSubmit }) => {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="想いを砂に..."
+        placeholder={t('writeYourFeelings')}
         className="sand-input w-48 text-sm"
         disabled={isAbsorbing}
       />
@@ -46,7 +48,7 @@ const TextInput: React.FC<TextInputProps> = ({ onSubmit }) => {
         type="submit"
         disabled={!text.trim() || isAbsorbing}
         className="sand-button p-3 disabled:opacity-40 disabled:cursor-not-allowed"
-        aria-label="送信"
+        aria-label={t('send')}
       >
         <Send className="w-4 h-4" />
       </button>

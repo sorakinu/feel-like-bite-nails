@@ -81,7 +81,7 @@ const SandCanvas: React.FC<SandCanvasProps> = ({ onClear, clearTrigger }) => {
     return () => window.removeEventListener('resize', updateSize);
   }, [generateSandTexture]);
 
-  // Clear animation when triggered
+  // Clear animation when triggered - smooth fade like sand settling
   useEffect(() => {
     if (clearTrigger === 0) return;
 
@@ -94,8 +94,7 @@ const SandCanvas: React.FC<SandCanvasProps> = ({ onClear, clearTrigger }) => {
     if (!ctx) return;
 
     let frame = 0;
-    const totalFrames = 60;
-    const imageData = ctx.getImageData(0, 0, drawingCanvas.width, drawingCanvas.height);
+    const totalFrames = 45;
 
     const animate = () => {
       if (frame >= totalFrames) {
@@ -105,13 +104,12 @@ const SandCanvas: React.FC<SandCanvasProps> = ({ onClear, clearTrigger }) => {
       }
 
       const progress = frame / totalFrames;
-      const eased = 1 - Math.pow(1 - progress, 3);
+      // Smooth easing for gentle fade
+      const eased = 1 - Math.pow(1 - progress, 2);
       
-      ctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+      // Simply fade out the drawing layer smoothly
       ctx.globalAlpha = 1 - eased;
-      ctx.putImageData(imageData, eased * 100, 0);
-      ctx.globalAlpha = 1;
-
+      
       frame++;
       requestAnimationFrame(animate);
     };
@@ -147,45 +145,61 @@ const SandCanvas: React.FC<SandCanvasProps> = ({ onClear, clearTrigger }) => {
 
     const dpr = window.devicePixelRatio || 1;
 
-    // Main stroke (depression in sand)
+    // Outer shadow (deep shadow for 3D depth)
     ctx.beginPath();
-    ctx.moveTo(from.x * dpr, from.y * dpr);
-    ctx.lineTo(to.x * dpr, to.y * dpr);
-    ctx.strokeStyle = 'rgba(139, 119, 101, 0.6)';
-    ctx.lineWidth = 20 * dpr;
+    ctx.moveTo((from.x + 4) * dpr, (from.y + 4) * dpr);
+    ctx.lineTo((to.x + 4) * dpr, (to.y + 4) * dpr);
+    ctx.strokeStyle = 'rgba(80, 65, 50, 0.35)';
+    ctx.lineWidth = 26 * dpr;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.stroke();
 
-    // Inner highlight (center of finger trail)
+    // Mid shadow layer
+    ctx.beginPath();
+    ctx.moveTo((from.x + 2) * dpr, (from.y + 2) * dpr);
+    ctx.lineTo((to.x + 2) * dpr, (to.y + 2) * dpr);
+    ctx.strokeStyle = 'rgba(100, 85, 70, 0.4)';
+    ctx.lineWidth = 24 * dpr;
+    ctx.stroke();
+
+    // Main stroke (depression in sand)
     ctx.beginPath();
     ctx.moveTo(from.x * dpr, from.y * dpr);
     ctx.lineTo(to.x * dpr, to.y * dpr);
-    ctx.strokeStyle = 'rgba(180, 165, 145, 0.4)';
+    ctx.strokeStyle = 'rgba(139, 119, 101, 0.65)';
+    ctx.lineWidth = 20 * dpr;
+    ctx.stroke();
+
+    // Inner highlight (center of finger trail - light hitting the bottom)
+    ctx.beginPath();
+    ctx.moveTo(from.x * dpr, from.y * dpr);
+    ctx.lineTo(to.x * dpr, to.y * dpr);
+    ctx.strokeStyle = 'rgba(190, 175, 155, 0.5)';
     ctx.lineWidth = 8 * dpr;
     ctx.stroke();
 
-    // Shadow on one side
+    // Bright edge highlight (top edge catching light)
     ctx.beginPath();
-    ctx.moveTo((from.x + 3) * dpr, (from.y + 3) * dpr);
-    ctx.lineTo((to.x + 3) * dpr, (to.y + 3) * dpr);
-    ctx.strokeStyle = 'rgba(100, 85, 70, 0.3)';
-    ctx.lineWidth = 22 * dpr;
+    ctx.moveTo((from.x - 2) * dpr, (from.y - 2) * dpr);
+    ctx.lineTo((to.x - 2) * dpr, (to.y - 2) * dpr);
+    ctx.strokeStyle = 'rgba(220, 210, 195, 0.3)';
+    ctx.lineWidth = 3 * dpr;
     ctx.stroke();
 
-    // Displaced sand particles
+    // Displaced sand particles at edges
     const distance = Math.sqrt(Math.pow(to.x - from.x, 2) + Math.pow(to.y - from.y, 2));
-    const particles = Math.floor(distance / 5);
+    const particles = Math.floor(distance / 4);
     
     for (let i = 0; i < particles; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const radius = 15 + Math.random() * 10;
+      const radius = 14 + Math.random() * 12;
       const px = to.x + Math.cos(angle) * radius;
       const py = to.y + Math.sin(angle) * radius;
       
       ctx.beginPath();
-      ctx.arc(px * dpr, py * dpr, (1 + Math.random()) * dpr, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${160 + Math.random() * 30}, ${145 + Math.random() * 25}, ${120 + Math.random() * 20}, ${0.3 + Math.random() * 0.3})`;
+      ctx.arc(px * dpr, py * dpr, (1 + Math.random() * 1.5) * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${165 + Math.random() * 35}, ${150 + Math.random() * 30}, ${125 + Math.random() * 25}, ${0.35 + Math.random() * 0.35})`;
       ctx.fill();
     }
   }, []);
