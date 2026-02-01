@@ -92,7 +92,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
-    touch-action: none;
     user-select: none;
   }
 }
