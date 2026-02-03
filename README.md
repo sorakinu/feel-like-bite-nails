@@ -5,10 +5,10 @@
 **URL**: https://feel-like-bite-nails.lovable.app
 
 誰にでも孤独を感じる時はあります。一人でいて寂しくなったとき、爪を噛んだり自分を傷つけたりする代わりに、砂に想いを書きなぐってみてください。その文字が砂の中に消えていくとき、あなたの心が一瞬でも軽くなれば幸いです。「思考と行動を軽くする」ための、最もシンプルなデジタル・フィジェットです。
-​Description (English):
+​:
 We all have moments of loneliness. When you feel anxious or alone, instead of biting your nails or succumbing to nervous habits, try scribbling your thoughts into this digital sand. Let your feelings dissolve as the sand shifts. If this app provides even a moment of relief and helps lighten your mind, it has fulfilled its purpose. A minimalist digital fidget for inner peace.
 
-​💡 How to Use / 使い方（英訳）
+​💡 How to Use / 使い方
 ​1. Draw with Your Heart
 Click and drag your mouse anywhere on the sand canvas. Draw freely until your mind feels at ease.
 （マウスを押して、砂の画面の好きな場所を気が済むまで描いてください。）
